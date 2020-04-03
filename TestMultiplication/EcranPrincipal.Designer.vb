@@ -71,6 +71,7 @@ Partial Class EcranPrincipal
         Me.Controls.Add(Me.tbReponse)
         Me.Controls.Add(Me.lQuestion)
         Me.Name = "EcranPrincipal"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Test Multiplication"
         Me.ResumeLayout(False)
         Me.PerformLayout()

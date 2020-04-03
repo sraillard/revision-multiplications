@@ -3,7 +3,7 @@
 Public Class EcranPrincipal
 
     ' Stockage liste
-    Public Liste(0 To 65) As String
+    Public Liste() As String = {}
     ' Random
     Public r As Random
     ' Index question
@@ -21,12 +21,12 @@ Public Class EcranPrincipal
 
         ' Création liste
         Dim x, y, n As Integer
-        n = 0
-        For x = 0 To 10
-            For y = 0 To 10
+        Liste = {}
+        For x = 1 To 9
+            For y = 1 To 9
                 If y <= x Then
-                    Liste(n) = x.ToString + "," + y.ToString
-                    n +=1
+                    Array.Resize(Liste, Liste.Count + 1)
+                    Liste(Liste.Count - 1) = x.ToString + "," + y.ToString
                 End If
             Next
         Next
@@ -100,6 +100,8 @@ Public Class EcranPrincipal
                 ' Fin
                 MessageBox.Show("Le test est fini !", "Fin", MessageBoxButtons.OK)
             End If
+            ' Suppression beep
+            e.SuppressKeyPress = True
         End If
     End Sub
 
