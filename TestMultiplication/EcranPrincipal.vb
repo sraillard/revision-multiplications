@@ -19,20 +19,27 @@ Public Class EcranPrincipal
 
     Private Sub EcranPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
 
+        ' Random seed
+        r = New Random(My.Computer.Clock.TickCount)
+
         ' Création liste
         Dim x, y, n As Integer
         Liste = {}
-        For x = 1 To 9
-            For y = 1 To 9
+        For x = 2 To 9
+            For y = 2 To 9
                 If y <= x Then
                     Array.Resize(Liste, Liste.Count + 1)
-                    Liste(Liste.Count - 1) = x.ToString + "," + y.ToString
+                    ' Random ordre nombre
+                    If r.Next(1, 2) = 2 Then
+                        Liste(Liste.Count - 1) = x.ToString + "," + y.ToString
+                    Else
+                        Liste(Liste.Count - 1) = y.ToString + "," + x.ToString
+                    End If
                 End If
             Next
         Next
 
         ' Random liste
-        r = New Random(My.Computer.Clock.TickCount)
         Dim i, j As Integer
         For i = 0 To Liste.Count - 1
             j = r.Next(i, Liste.Count - 1)
